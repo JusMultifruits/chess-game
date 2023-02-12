@@ -1,11 +1,6 @@
 #pragma once
 
-#include <pieces/piece.hxx>
-
-class Cell {
-public:
-  Cell();
-  Cell(Piece*);
-private:
-  Piece* currentPiece;
+struct Cell {
+  unsigned short X;
+  unsigned short Y;
 };
