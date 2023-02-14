@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include <board/cell.hxx>
+#include <board/cell/cell.hxx>
 
 class Board {
 public:

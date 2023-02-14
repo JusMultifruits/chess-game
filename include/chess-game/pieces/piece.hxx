@@ -1,6 +1,6 @@
 #pragma once
 
-#include <board/cell.hxx>
+#include <board/cell/coordinates.hxx>
 
 /*
  * Keep Enum to add factory later maybe?
@@ -11,9 +11,9 @@ enum PieceColor { White, Black };
 class Piece {
 public:
   Piece(PieceColor color);
-  virtual void move(Cell origin, Cell target) = 0;
+  virtual void move(Coordinates origin, Coordinates target) = 0;
 private:
-  virtual bool isValidMove(Cell origin, Cell target) = 0;
+  virtual bool isValidMove(Coordinates origin, Coordinates target) = 0;
   PieceColor color;
 };
 
@@ -21,16 +21,16 @@ private:
 class King : public Piece{
   using Piece::Piece; // use Parent constructor
 public:
-  void move(Cell origin, Cell target) override;
+  void move(Coordinates origin, Coordinates target) override;
 private:
-  bool isValidMove(Cell origin, Cell target) override;
+  bool isValidMove(Coordinates origin, Coordinates target) override;
 };
 
-class Queen : Piece{ 
+class Queen : public Piece{ 
   using Piece::Piece; // use Parent constructor
 public:
-  void move(Cell origin, Cell target) override;
+  void move(Coordinates origin, Coordinates target) override;
 private:
-  bool isValidMove(Cell origin, Cell target) override;
+  bool isValidMove(Coordinates origin, Coordinates target) override;
 };
 

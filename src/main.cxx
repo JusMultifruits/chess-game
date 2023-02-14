@@ -1,20 +1,24 @@
 #include <iostream>
 
 #include <board/board.hxx>
-#include <board/cell.hxx>
+#include <board/cell/cell.hxx>
 #include <pieces/piece.hxx>
 
 int main(){
-  Cell baseCell, secondCell;
+  Coordinates baseCoord, secondCoord;
   
-  baseCell.X = 1;
-  baseCell.Y = 2;
-  secondCell.X = 1;
-  secondCell.Y = 3;  
+  baseCoord.X = 1;
+  baseCoord.Y = 2;
+  secondCoord.X = 1;
+  secondCoord.Y = 3;  
 
+
+  
   King king(PieceColor::White);
   Queen queen(PieceColor::White);
 
-  queen.move(baseCell, secondCell);
+  Cell baseCell(&king), secondCell(&queen), emptyCell();
+
+  queen.move(baseCell.getCoordinates(), secondCell.getCoordinates());
   return 0;
 }
