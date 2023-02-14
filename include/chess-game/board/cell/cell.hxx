@@ -13,6 +13,9 @@ public:
   Cell(Piece* piece);
   Coordinates getCoordinates();
   Piece* getPiece();
+  struct HashFunction {
+    size_t operator()(Cell& other) const;
+  };
 private:
   Piece* currentPiece;
   Coordinates coord;

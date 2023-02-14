@@ -18,3 +18,8 @@ Piece* Cell::getPiece() {
   return this->currentPiece;
 }
 
+size_t Cell::HashFunction::operator() (Cell& cell) const {
+  size_t xHash = std::hash<int>()(cell.getCoordinates().X);
+  size_t yHash = std::hash<int>()(cell.getCoordinates().Y);
+  return xHash ^ yHash;
+}
