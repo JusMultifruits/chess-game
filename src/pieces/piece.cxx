@@ -3,21 +3,28 @@
 #include <board/cell.hxx>
 #include <pieces/piece.hxx>
 
-Piece::Piece(PieceColor color, Cell position) : color(color), position(position){}
+/*
+ * Piece Class Constructor
+ */
+Piece::Piece(PieceColor color) : color(color) {}
 
-
-void King::move(Cell cell){
+/*
+ * King methods
+ */
+void King::move(Cell origin, Cell target){
   std::cout << "Worry not, for I am King";
 }
 
-bool King::isMoveValid(Cell cell){
+bool King::isValidMove(Cell origin, Cell target){
   return true;
 }
 
-
-void Queen::move(Cell cell){
+/*
+ * Queen methods
+ */
+void Queen::move(Cell origin, Cell target){
   std::cout << "The Queen has arrived" << std::endl;
 }
-bool Queen::isMoveValid(Cell cell){
+bool Queen::isValidMove(Cell origin, Cell target){
   return false;
 }

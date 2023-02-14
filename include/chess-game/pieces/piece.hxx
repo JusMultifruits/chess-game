@@ -2,33 +2,35 @@
 
 #include <board/cell.hxx>
 
+/*
+ * Keep Enum to add factory later maybe?
+ */
 //enum PieceType { King, Queen, Rook, Bishop, Knight, Pawn };
 enum PieceColor { White, Black };
 
 class Piece {
 public:
-  Piece(PieceColor color, Cell position);
-  virtual void move(Cell cell) = 0;
+  Piece(PieceColor color);
+  virtual void move(Cell origin, Cell target) = 0;
 private:
-  virtual bool isMoveValid(Cell cell) = 0;
+  virtual bool isValidMove(Cell origin, Cell target) = 0;
   PieceColor color;
-  Cell position;
 };
 
 
 class King : public Piece{
-  using Piece::Piece;
+  using Piece::Piece; // use Parent constructor
 public:
-  void move(Cell cell) override;
+  void move(Cell origin, Cell target) override;
 private:
-  bool isMoveValid(Cell cell) override;
+  bool isValidMove(Cell origin, Cell target) override;
 };
 
-class Queen : Piece{
-  using Piece::Piece;
+class Queen : Piece{ 
+  using Piece::Piece; // use Parent constructor
 public:
-  void move(Cell cell) override;
+  void move(Cell origin, Cell target) override;
 private:
-  bool isMoveValid(Cell cell) override;
+  bool isValidMove(Cell origin, Cell target) override;
 };
 

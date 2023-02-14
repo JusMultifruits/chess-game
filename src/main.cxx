@@ -12,10 +12,9 @@ int main(){
   secondCell.X = 1;
   secondCell.Y = 3;  
 
-  King king(PieceColor::White, baseCell);
-  Queen queen(PieceColor::White, secondCell);
+  King king(PieceColor::White);
+  Queen queen(PieceColor::White);
 
-  queen.move(baseCell);
-
+  queen.move(baseCell, secondCell);
   return 0;
 }
