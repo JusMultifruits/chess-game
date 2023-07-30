@@ -12,13 +12,5 @@ int main(){
   secondCoord.X = 1;
   secondCoord.Y = 3;  
 
-
-  
-  King king(PieceColor::White);
-  Queen queen(PieceColor::White);
-
-  Cell baseCell(&king), secondCell(&queen), emptyCell();
-
-  queen.move(baseCell.getCoordinates(), secondCell.getCoordinates());
   return 0;
 }
