@@ -65,6 +65,6 @@ std::map<Coordinates, Cell*> Board::initCells() {
 }
 
 void Board::displayBoard(){
-  Coordinates coord = {0,0};
+  Coordinates coord = {2,0};
   std::cout << this->mCells[coord];    
 }

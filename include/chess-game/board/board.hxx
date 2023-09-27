@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <map>
-
 #include <board/cell/cell.hxx>
 
 class Board {
