@@ -1,12 +1,15 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 
 #include <board/cell/cell.hxx>
 
 class Board {
 public:
   Board();
+  void displayBoard();
 private:
-  //  Cell cells[8][8];
+  std::map<Coordinates, Cell*> mCells;
+  std::map<Coordinates, Cell*> initCells();
 };

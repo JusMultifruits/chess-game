@@ -12,6 +12,7 @@ enum PieceColor { White, Black };
 class Piece {
 public:
   Piece(PieceColor color, PieceType type);
+  PieceColor getPiece();
 private:
   PieceColor color;
   PieceType type;
