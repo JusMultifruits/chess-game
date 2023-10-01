@@ -12,8 +12,11 @@ enum PieceColor { White, Black };
 class Piece {
 public:
   Piece(PieceColor color, PieceType type);
-  PieceColor getPiece();
+  PieceColor getColor();
+  PieceType getType();
 private:
   PieceColor color;
   PieceType type;
 };
+
+std::ostream& operator << (std::ostream& outs, Piece& piece);

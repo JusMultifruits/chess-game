@@ -9,8 +9,7 @@
 
 class Cell {
 public:
-  Cell();
-  Cell(Piece* piece);
+  Cell(Piece* piece, Coordinates coord);
   Coordinates getCoordinates();
   Piece* getPiece();
   struct HashFunction {

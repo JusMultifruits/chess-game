@@ -2,12 +2,9 @@
 
 #include <board/cell/cell.hxx>
 
-Cell::Cell(){
-  this->currentPiece = NULL;
-}
-
-Cell::Cell(Piece* piece) {
+Cell::Cell(Piece* piece, Coordinates coord) {
   this->currentPiece = piece;
+  this->coord = coord;
 }
 
 Coordinates Cell::getCoordinates() {
@@ -27,5 +24,6 @@ size_t Cell::HashFunction::operator() (Cell& cell) const {
 
 // overload << operator for stream rendition (~ to string)
 std::ostream& operator << (std::ostream& outs, Cell& cell){
+  std::cout << "Displaying a Cell...";
   return outs << cell.getCoordinates() << cell.getPiece();
 }
