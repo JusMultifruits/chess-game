@@ -1,11 +1,10 @@
 #include <iostream>
 
-#include <board/board.hxx>
-#include <board/cell/cell.hxx>
-#include <pieces/piece.hxx>
-
+#include <game.hxx>
 int
 main()
 {
+  Game* game = new Game();
+  game->startGame();
   return 0;
 }

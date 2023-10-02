@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <list>
 
 #include <board/board.hxx>
 #include <pieces/piece.hxx>
@@ -14,4 +15,5 @@ public:
 private:
   Board* board;
   void playPlayerTurn(PieceColor);
+  std::list<Cell*> listAvailableMoves(Cell*);
 };

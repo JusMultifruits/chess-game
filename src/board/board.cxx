@@ -1,9 +1,43 @@
 #include <board/board.hxx>
 
+/*
+ * Public
+ */
+
 Board::Board()
 {
   this->mCells = initCells();
+  Coordinates kingsLocation = { 4, 0 };
+  this->kingsCells[0] = this->mCells[kingsLocation];
+  kingsLocation = { 4, 7 };
+  this->kingsCells[1] = this->mCells[kingsLocation];
+  std::cout << *(this->kingsCells[0]->getPiece()) << " // "
+            << *(this->kingsCells[1]->getPiece());
 }
+
+Cell*
+Board::getCell(Coordinates coord)
+{
+  return this->mCells[coord];
+}
+
+void
+Board::displayBoard()
+{
+  std::cout << "Displaying board...";
+  for (auto it = this->mCells.cbegin(); it != this->mCells.cend(); ++it) {
+    if (it->second->getPiece() == NULL) {
+      std::cout << it->first << " None " << std::endl;
+    } else {
+      std::cout << it->first << " " << *(it->second->getPiece()) << " "
+                << std::endl;
+    }
+  }
+}
+
+/*
+ * Private
+ */
 
 std::map<Coordinates, Cell*>
 Board::initCells()
@@ -27,7 +61,7 @@ Board::initCells()
         else
           currentColor = Black;
 
-        if (j == 1 or j == 2)
+        if (j == 1 or j == 6)
           currentType = Pawn;
         else
           switch (i) {
@@ -56,7 +90,6 @@ Board::initCells()
               currentType = King;
               break;
           }
-
         currentPiece = new Piece(currentColor, currentType);
       }
       Coordinates currentCoord = { i, j };
@@ -65,19 +98,4 @@ Board::initCells()
     }
   }
   return mCells;
-}
-
-void
-Board::displayBoard()
-{
-  Coordinates coord = { 2, 0 };
-  std::cout << "Displaying board...";
-  for (auto it = this->mCells.cbegin(); it != this->mCells.cend(); ++it) {
-    if (it->second->getPiece() == NULL) {
-      std::cout << it->first << " None " << std::endl;
-    } else {
-      std::cout << it->first << " " << *(it->second->getPiece()) << " "
-                << std::endl;
-    }
-  }
 }

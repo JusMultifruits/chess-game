@@ -2,10 +2,6 @@
 
 #include <board/cell/coordinates.hxx>
 
-/*
- * Keep Enum to add factory later maybe?
- */
-
 enum PieceType
 {
   King,
@@ -27,6 +23,8 @@ public:
   Piece(PieceColor color, PieceType type);
   PieceColor getColor();
   PieceType getType();
+  std::string pieceTypeToString();
+  std::string pieceColorToString();
 
 private:
   PieceColor color;
