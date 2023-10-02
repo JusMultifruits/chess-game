@@ -5,7 +5,5 @@
 #include <pieces/piece.hxx>
 
 int main(){
-  Board* board = new Board();
-  board->displayBoard();
   return 0;
 }
