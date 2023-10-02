@@ -4,6 +4,8 @@
 #include <board/cell/cell.hxx>
 #include <pieces/piece.hxx>
 
-int main(){
+int
+main()
+{
   return 0;
 }

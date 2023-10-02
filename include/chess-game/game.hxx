@@ -5,11 +5,13 @@
 #include <board/board.hxx>
 #include <pieces/piece.hxx>
 
-class Game{
+class Game
+{
 public:
   Game();
   void startGame();
+
 private:
   Board* board;
-  void  playPlayerTurn(PieceColor);
+  void playPlayerTurn(PieceColor);
 };

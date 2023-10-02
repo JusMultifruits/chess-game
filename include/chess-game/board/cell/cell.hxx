@@ -7,14 +7,17 @@
  * by default struct attributes are public while class' are private
  */
 
-class Cell {
+class Cell
+{
 public:
   Cell(Piece* piece, Coordinates coord);
   Coordinates getCoordinates();
   Piece* getPiece();
-  struct HashFunction {
+  struct HashFunction
+  {
     size_t operator()(Cell& other) const;
   };
+
 private:
   Piece* currentPiece;
   Coordinates coord;
