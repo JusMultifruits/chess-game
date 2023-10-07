@@ -17,7 +17,7 @@ Game::startGame()
   bool gameEnd = false;
   PieceColor currentPlayer = White;
 
-  Coordinates coord = { 1, 0 };
+  Coordinates coord = { 1, 1 };
   std::cout << *(this->board->getCell(coord)->getPiece()) << " - " << coord
             << std::endl;
   while (!gameEnd) {
@@ -61,6 +61,7 @@ Game::computeAvailableMoves(Cell* currentCell)
       availableMoves = computeMovesKnight(currentCell);
       break;
     case Pawn:
+      availableMoves = computeMovesPawn(currentCell);
       break;
   }
   return availableMoves;
@@ -94,6 +95,51 @@ Game::computeMovesKnight(Cell* currentCell)
           computedMoves.push_back(tmpCell);
         }
       }
+    }
+  }
+  return computedMoves;
+}
+
+std::list<Cell*>
+Game::computeMovesPawn(Cell* currentCell)
+{
+  Coordinates curCoords = currentCell->getCoordinates();
+  Coordinates tmpCoord;
+  std::list<Cell*> computedMoves;
+  std::cout << "Candidate moves : ";
+  if ((curCoords.Y == 1 and currentCell->getPiece()->getColor() == White) or
+      (curCoords.Y == 6 and currentCell->getPiece()->getColor() == Black)) {
+    // if pawn is starting it is able to skip a step
+    if (currentCell->getPiece()->getColor() == White) {
+      tmpCoord = { curCoords.X, curCoords.Y + 2 };
+    } else {
+      tmpCoord = { curCoords.X, curCoords.Y - 2 };
+    }
+    std::cout << tmpCoord << std::endl;
+    if (this->board->getCell(tmpCoord)->getPiece() == NULL) {
+      computedMoves.push_back(this->board->getCell(tmpCoord));
+    }
+  }
+  /*
+   * To implement: coup en passant
+   */
+
+  /*
+   * Basic move
+   */
+  for (short i = -1; i < 2; i++) {
+    if (curCoords.X + i > 7 or curCoords.X + i < 0) {
+      continue;
+    }
+    if (currentCell->getPiece()->getColor() == White) {
+      tmpCoord = { curCoords.X + i, curCoords.Y + 1 };
+    } else {
+      tmpCoord = { curCoords.X + i, curCoords.Y - 1 };
+    }
+    std::cout << tmpCoord << std::endl;
+    if ((i == 0 and this->board->getCell(tmpCoord)->getPiece() == NULL) or
+        (i != 0 and this->board->getCell(tmpCoord)->getPiece() != NULL)) {
+      computedMoves.push_back(this->board->getCell(tmpCoord));
     }
   }
   return computedMoves;

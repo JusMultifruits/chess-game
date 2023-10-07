@@ -17,4 +17,5 @@ private:
   void playPlayerTurn(PieceColor);
   std::list<Cell*> computeAvailableMoves(Cell*);
   std::list<Cell*> computeMovesKnight(Cell*);
+  std::list<Cell*> computeMovesPawn(Cell*);
 };
