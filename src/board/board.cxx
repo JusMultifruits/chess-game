@@ -11,8 +11,6 @@ Board::Board()
   this->kingsCells[0] = this->mCells[kingsLocation];
   kingsLocation = { 4, 7 };
   this->kingsCells[1] = this->mCells[kingsLocation];
-  std::cout << *(this->kingsCells[0]->getPiece()) << " // "
-            << *(this->kingsCells[1]->getPiece());
 }
 
 Cell*

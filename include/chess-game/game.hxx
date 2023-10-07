@@ -15,5 +15,6 @@ public:
 private:
   Board* board;
   void playPlayerTurn(PieceColor);
-  std::list<Cell*> listAvailableMoves(Cell*);
+  std::list<Cell*> computeAvailableMoves(Cell*);
+  std::list<Cell*> computeMovesKnight(Cell*);
 };
